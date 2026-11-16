@@ -1,0 +1,7 @@
+{
+  "name": "orca-parallel",
+  "version": "0.1.0",
+  "description": "Run explicit parallel requests with task-specific Gemini 4 Hydrogen workers in Orca.",
+  "skills": "./skills/",
+  "requires_local_executor": true
+}

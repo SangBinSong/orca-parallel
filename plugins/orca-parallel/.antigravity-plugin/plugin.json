@@ -1,0 +1,7 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "orca-parallel",
+  "displayName": "Orca Parallel",
+  "version": "0.1.0",
+  "description": "Run explicit parallel requests with task-specific Gemini 4 Hydrogen workers in Orca."
+}
