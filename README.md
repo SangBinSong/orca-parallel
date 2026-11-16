@@ -10,7 +10,7 @@ Codex와 Antigravity에서 명시적 병렬 작업 요청을 처리하는 지침
 
 ## 플러그인 등록
 
-[GitHub 저장소](https://github.com/SangBinSong/orca-parallel)는 공개되어 있습니다. 아래 명령으로 GitHub 로그인 없이 소스를 받을 수 있습니다.
+[GitHub 저장소](https://github.com/SangBinSong/orca-parallel)에서 각 호스트의 CLI로 바로 등록할 수 있습니다.
 
 ### Codex
 
@@ -28,16 +28,14 @@ codex plugin list --marketplace orca-parallel-local
 
 ### Antigravity
 
-저장소를 복제한 뒤 Antigravity 매니페스트가 들어 있는 `plugins/orca-parallel` 폴더를 설치합니다.
+공개 GitHub URL을 전달해 플러그인을 설치합니다.
 
 ```sh
-git clone https://github.com/SangBinSong/orca-parallel.git
-cd orca-parallel
-agy plugin install ./plugins/orca-parallel
+agy plugin install https://github.com/SangBinSong/orca-parallel
 agy plugin list
 ```
 
-이미 복제했다면 프로젝트 루트에서 `agy plugin install`부터 실행합니다. Antigravity CLI 대화 화면에서는 `/plugin`의 로컬 폴더 설치 메뉴에서 같은 폴더를 선택할 수 있습니다. 새 세션에서 `/orca-parallel`을 스킬 목록에서 확인합니다. [Antigravity 플러그인 문서](https://antigravity.google/docs/plugins?tab=cli)
+로컬에 복제한 프로젝트는 프로젝트 루트에서 `agy plugin install .`로 설치할 수 있습니다. Antigravity CLI 대화 화면에서 로컬 폴더를 선택할 때도 프로젝트 루트를 지정합니다. 새 세션에서 `/orca-parallel`을 스킬 목록에서 확인합니다. [Antigravity 플러그인 문서](https://antigravity.google/docs/plugins?tab=cli)
 
 ## 사용
 
@@ -50,7 +48,7 @@ agy plugin list
 ## 확인 방법
 
 ```sh
-agy plugin validate ./plugins/orca-parallel --strict --json
+agy plugin validate . --strict --json
 ```
 
 각 호스트에서 명시적 병렬 요청과 기술 용어로만 쓰인 “병렬 실행”을 구분하는지 확인합니다. 실제 실행은 읽기 전용 작업 두 개와 상한 `1개`로 점검할 수 있습니다. Orca 실행 기록에서 첫 워커 세션이 해제된 뒤에 두 번째가 시작되는지, 지정한 모델과 완료 결과가 반환되는지 확인합니다.
