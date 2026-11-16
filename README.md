@@ -10,40 +10,34 @@ Codex와 Antigravity에서 명시적 병렬 작업 요청을 처리하는 지침
 
 ## 플러그인 등록
 
-[GitHub 저장소](https://github.com/SangBinSong/orca-parallel)는 비공개입니다. 새 환경에서는 저장소 읽기 권한이 있는 GitHub 계정으로 로그인한 뒤 프로젝트를 받습니다. [GitHub CLI 복제 문서](https://cli.github.com/manual/gh_repo_clone)
-
-```sh
-gh auth login --hostname github.com
-gh repo clone SangBinSong/orca-parallel
-cd orca-parallel
-```
-
-이미 로그인했다면 `gh auth login`을 건너뜁니다. 프로젝트를 이미 받았다면 `README.md`가 있는 프로젝트 루트에서 아래 명령을 실행합니다.
+[GitHub 저장소](https://github.com/SangBinSong/orca-parallel)는 공개되어 있습니다. 아래 명령으로 GitHub 로그인 없이 소스를 받을 수 있습니다.
 
 ### Codex
 
-프로젝트를 마켓플레이스로 등록하고 플러그인을 설치합니다.
+GitHub 저장소를 마켓플레이스로 등록하고 플러그인을 설치합니다.
 
 ```sh
-codex plugin marketplace add .
+codex plugin marketplace add SangBinSong/orca-parallel
 codex plugin add orca-parallel@orca-parallel-local
 codex plugin list --marketplace orca-parallel-local
 ```
 
-GitHub 읽기 권한이 있는 Git 인증이 구성돼 있다면 `codex plugin marketplace add SangBinSong/orca-parallel`로 GitHub 소스를 직접 등록할 수도 있습니다. 등록 후 같은 `codex plugin add` 명령을 실행합니다. [Codex 마켓플레이스 등록 문서](https://developers.openai.com/plugins/build/plugins#add-a-marketplace-from-the-cli)
+로컬에 복제한 프로젝트를 사용하려면 프로젝트 루트에서 `codex plugin marketplace add .`로 등록한 뒤 같은 `codex plugin add` 명령을 실행합니다. [Codex 마켓플레이스 등록 문서](https://developers.openai.com/plugins/build/plugins#add-a-marketplace-from-the-cli)
 
 새 Codex CLI 세션에서 `/skills`로 `orca-parallel` 스킬을 확인합니다. 데스크톱 앱에서는 마켓플레이스 등록 후 앱을 다시 시작하고 **Plugins**에서 `orca-parallel-local`을 선택해 설치할 수 있습니다. [Codex 로컬 플러그인 문서](https://developers.openai.com/plugins/build/plugins#install-a-local-plugin-manually)
 
 ### Antigravity
 
-프로젝트 루트에서 Antigravity 매니페스트가 들어 있는 `plugins/orca-parallel` 폴더를 설치합니다.
+저장소를 복제한 뒤 Antigravity 매니페스트가 들어 있는 `plugins/orca-parallel` 폴더를 설치합니다.
 
 ```sh
+git clone https://github.com/SangBinSong/orca-parallel.git
+cd orca-parallel
 agy plugin install ./plugins/orca-parallel
 agy plugin list
 ```
 
-Antigravity CLI 대화 화면에서는 `/plugin`의 로컬 폴더 설치 메뉴에서 같은 폴더를 선택할 수 있습니다. 새 세션에서 `/orca-parallel`을 스킬 목록에서 확인합니다. [Antigravity 플러그인 문서](https://antigravity.google/docs/plugins?tab=cli)
+이미 복제했다면 프로젝트 루트에서 `agy plugin install`부터 실행합니다. Antigravity CLI 대화 화면에서는 `/plugin`의 로컬 폴더 설치 메뉴에서 같은 폴더를 선택할 수 있습니다. 새 세션에서 `/orca-parallel`을 스킬 목록에서 확인합니다. [Antigravity 플러그인 문서](https://antigravity.google/docs/plugins?tab=cli)
 
 ## 사용
 
